@@ -35,3 +35,8 @@ function adventureSelector ( userChoice ){
                    };
                }
 }
+
+
+// Write one line of code that calls adventureSelector when the user selects choice 3, and that automatically invokes the function that gets returned. 
+
+adventureSelector(3)();

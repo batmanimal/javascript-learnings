@@ -20,20 +20,21 @@ Assume the user’s choice has already been stored as 1, 2, or 3 (and only these
 function adventureSelector ( userChoice ){
   if(userChoice == 1) {
     return function () {
-      alert("You've selected the Vines of Doom!\n" +
-                 "Hope you have a swingin' time.");
-                 };
+      alert("You've selected the Vines of Doom!\n" + "Hope you have a swingin' time.");
+    };
+    
+  } else if (userChoice == 2) {
+    return function () {
+      alert("Looks like you want the Lake of Despair!\n" + "Watch out for crocs. And I ain't talkin' about shoes.");
+    };
+    
+  } else {
+    return function () {
+      alert("The Caves of Catastrophe, really?\n" + "Alright, well....nice knowing you.");
+      
+    };
+    
   }
-                 else if (userChoice == 2) {
-                   return function () {
-                     alert("Looks like you want the Lake of Despair!\n" +
-                   "Watch out for crocs. And I ain't talkin' about shoes.");
-                 };
-               } else {
-                 return function () {
-                   alert("The Caves of Catastrophe, really?\n" + "Alright, well....nice knowing you.");
-                   };
-               }
 }
 
 

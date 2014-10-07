@@ -6,9 +6,9 @@ function warningMaker( obstacle ){
   return function ( number, location ) {
     count++;
     zones.push(location);
-    var zonesList = "";
+    var zonesList = ""; // this is the part I was missing - tried to combine this with line 11 
     for (var i = 0; i < zones.length; i++) {
-      zonesList = zonesList + "\n" + zones[i];
+      zonesList = zonesList + "\n" + zones[i]; // addine new line here means you don't need it in the alert message
     }
     alert("Beware! There have been " +
           obstacle +

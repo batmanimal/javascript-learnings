@@ -41,3 +41,22 @@ function adventureSelector ( userChoice ){
 // Write one line of code that calls adventureSelector when the user selects choice 3, and that automatically invokes the function that gets returned. 
 
 adventureSelector(3)();
+
+
+// Puzzlers
+// “What is obtained when the result of passing 9 into function 4 is then passed into the function 
+// whose array index matches the result of passing 3 into function 2?”
+
+
+var puzzlers = [
+  function ( a ) { return 8*a - 10; }, 
+  function ( a ) { return (a-3) * (a-3) * (a-3); }, 
+  function ( a ) { return a * a + 4; },
+  function ( a ) { return a % 5; }
+];
+alert( puzzlers[ puzzlers[1](3) ]( puzzlers[3](9) ) );  // need to figure out this syntax
+
+// Okay, check this out. Notice that puzzlers[index] calls forth a specific function expression, and puzzlers[index](parameter) will pass the parameter directly into the function expression you’ve accessed. This, in turn, produces a value that can be used anywhere, either as a parameter itself, or even as another array index, both of which we’ve done here.
+
+
+

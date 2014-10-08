@@ -71,4 +71,60 @@ lighthouseRock.weaponBulbs = superBlinders;
 
 console.log(lighthouseRock.weaponBulbs[2][0]);
 
+// To the Lighthouse, Quick!
+// http://javascript-roadtrip-part3.codeschool.com/levels/4/challenges/8 
+
+var superBlinders = [ ["Firestorm", 4000], ["Solar Death Ray", 6000], ["Supernova", 12000] ];
+var lighthouseRock = {
+  gateClosed: true,
+  weaponBulbs: superBlinders,
+  capacity: 30,
+  secretPassageTo: "Underwater Outpost",
+  numRangers: 0
+};
+
+function addRanger (location, name, skillz, station) {
+  location.numRangers++;
+  location["ranger" + location.numRangers] = {who: name, sklz: skillz, stn: station};
+} 
+
+addRanger(lighthouseRock, "Nick Walsh", "magnification burn", 2); 
+addRanger(lighthouseRock, "Drew Barontini", "uppercut launch", 3);
+addRanger(lighthouseRock, "Christine Wong", "bomb defusing", 1);
+
+// Man Your Bulb Stations!
+/* Build a function that takes in a location object, examines every ranger’s station number, and retrieves the name of the super-blinder to which they’re assigned from the array of the super-blinders. When the right super-blinder is found for a ranger-dev, alert it in a message to the ranger in the following format:
+
+Avast, me hearties!
+There be Pirates nearby! Stations!
+<name>, man the <superblinder>!
+<name>, man the <superblinder>!
+<name>, man the <superblinder>!
+In other words, the entire list of assignments should be contained within one alert. Hmm, sound familiar?
+
+Call your function dontPanic, and when it is completed, call it on the lighthouseRock variable which is provided for you, complete with new ranger-dev objects as if they had been there from the get-go.
+*/ 
+
+var superBlinders = [ ["Firestorm", 4000], ["Solar Death Ray", 6000], ["Supernova", 12000] ];
+var lighthouseRock = {
+  gateClosed: true,
+  weaponBulbs: superBlinders,
+  capacity: 30,
+  secretPassageTo: "Underwater Outpost",
+  numRangers: 3,
+  ranger1: {name: "Nick Walsh", skillz: "magnification burn", station: 2},
+  ranger2: {name: "Drew Barontini", skillz: "uppercut launch", station: 3},
+  ranger3: {name: "Christine Wong", skillz: "bomb defusing", station: 1}
+};
+
+function dontPanic (location) {
+  var list = "";
+  for(var i = 1; i <= superBlinders.length; i++) {
+    list = list + location["ranger"+i].name + ", man the " + location.weaponBulbs[location["ranger"+i].station-1][0] + "!\n";
+  }
+  alert("Avast, me hearties!\n" + "There be Pirates nearby! Stations!\n" + list);
+  }
+}
+
+dontPanic(lighthouseRock);
 

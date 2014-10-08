@@ -50,3 +50,25 @@ vehicle2.submersible = false;
 vehicle3.weapon = "Torpedoes";
 vehicle3.submersible = true;
 vehicle3.capacity = vehicle3.capacity*2;
+
+// Blinders On: Accessing sub-arrays
+
+/* Completely remove the existing bulb array from the Lighthouse Rock object, including its property.
+Add in the new array using only its variable name and the property name weaponBulbs.
+Examine the array and write a line of code that logs out the name of the superblinder with the highest wattage using only object and array notation (no hard-coding the message with the name).
+*/
+
+var superBlinders = [ ["Firelight", 4000], ["Solar Death Ray", 6000], ["Supernova", 12000] ];
+var lighthouseRock = {
+  gateClosed: true,
+  bulbs: [ 200, 500, 750 ],
+  capacity: 30,
+  secretPassageTo: "Underwater Outpost"
+};
+
+delete lighthouseRock.bulbs;
+lighthouseRock.weaponBulbs = superBlinders;
+
+console.log(lighthouseRock.weaponBulbs[2][0]);
+
+

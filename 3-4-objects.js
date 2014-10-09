@@ -172,3 +172,24 @@ function relieveDuty (vehicle, day){
 }
 var offToday = relieveDuty(vehicle3, "Friday");
 
+
+
+// Enumeration 1
+/* Build a declared function called listGuns that accepts a container of spearguns, called guns, as a parameter and logs out the name of each Speargun. Additionally, use speargun to refer to the property names inside your function. When your function is built, call it on the given shipment of guns.
+*/
+
+var rockSpearguns = {
+  Sharpshooter: {barbs: 2, weight: 10, heft: "overhand"},
+  Pokepistol: {barbs: 4, weight: 8, heft: "shoulder"},
+  Javelinjet: {barbs: 4, weight: 12, heft: "waist"},
+  Firefork: {barbs: 6, weight: 8, heft: "overhand"},
+  "The Impaler": {barbs: 1, weight: 30, heft: "chest"}
+};
+
+function listGuns (guns) {
+  for (var speargun in guns) {
+    console.log(speargun);
+  }
+}
+
+listGuns(rockSpearguns);

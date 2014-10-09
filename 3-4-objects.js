@@ -193,3 +193,26 @@ function listGuns (guns) {
 }
 
 listGuns(rockSpearguns);
+
+// Enumeration 2
+/* Modify your existing listGuns function to log out the following message for each Speargun contained with the shipping container:
+
+Behold! <speargun name>, with <heft style> heft!
+Additionally, use only bracket notation for accessing properties within your function. For efficiency of code, create NO new variables. You’ll still want to call the function at the end, so you can leave that line of code intact.
+*/
+
+var rockSpearguns = {
+  Sharpshooter: {barbs: 2, weight: 10, heft: "overhand"},
+  Pokepistol: {barbs: 4, weight: 8, heft: "shoulder"},
+  Javelinjet: {barbs: 4, weight: 12, heft: "waist"},
+  Firefork: {barbs: 6, weight: 8, heft: "overhand"},
+  "The Impaler": {barbs: 1, weight: 30, heft: "chest"}
+};
+
+function listGuns (guns) {
+  for (var speargun in guns) {
+    console.log("Behold! " + speargun + ", with " + guns[speargun]["heft"] + " heft!");
+  }
+}
+
+listGuns(rockSpearguns);

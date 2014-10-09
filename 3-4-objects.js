@@ -128,3 +128,47 @@ function dontPanic (location) {
 
 dontPanic(lighthouseRock);
 
+// Super tricky one involving shift and push arrays
+
+/* Build a function, called relieveDuty, that accepts a vehicle object and a day of the week as parameters. Name the vehicle object vehicle and the day of the week day. This function should take care of all of the following requirements:
+
+Search only over all of the ranger objects contained within the vehicle object, creatively using the existing numRangers property to do so. No need to look at the other properties in the vehicle.
+
+All existing ranger objects will need to be sorted into arrays, offDuty and onDuty. The offDuty array will be returned from the function. The onDuty array will contain staying rangers that need to be renumbered.
+
+All onDuty rangers will be re-added to the vehicle object, with their property names rebuilt in the order that rangers were added to onDuty. Ranger numbers should start with 1. Remember to remove the existing property.
+
+At the end of these operations, remember to adjust the numRangers property to contain the new, smaller amount of rangers.
+
+After building the function, call it on vehicle3 and "Friday". The resulting array of objects should be stored in a variable called offToday.
+
+*/
+
+var vehicle3 = {
+  type: "Submarine", capacity: 8, storedAt: "Underwater Outpost",
+  ranger1: { name: "Gregg Pollack", skillz: "Lasering", dayOff: "Friday"},
+  ranger2: { name: "Bijan Boustani", skillz: "Roundhouse Kicks", dayOff: "Tuesday"},
+  ranger3: { name: "Ashley Smith", skillz: "Torpedoing", dayOff: "Friday"},
+  ranger4: { name: "Mark Krupinski", skillz: "Sniping", dayOff: "Wednesday"},
+  numRangers: 4
+};
+function relieveDuty (vehicle, day){
+  var offDuty = [ ];
+  var onDuty = [ ];
+  for(var i = 1; i<=vehicle["numRangers"]; i++){
+    if(vehicle["ranger" + i]["dayOff"] == day){
+      offDuty.push(vehicle["ranger" + i]);
+    }
+    else{
+      onDuty.push(vehicle["ranger" + i]);
+    }
+    delete vehicle["ranger" + i];
+  }
+  vehicle.numRangers -= offDuty.length;
+  for(var j = 1; j<=vehicle["numRangers"]; j++){
+    vehicle["ranger" + j] = onDuty.shift();
+  }
+  return offDuty;
+}
+var offToday = relieveDuty(vehicle3, "Friday");
+

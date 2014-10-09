@@ -89,3 +89,106 @@ post10.sendRopeTo(post9);
 post10.weathervane = "N";
 post10.lightsOn = false;
     
+
+// Creating a Constructor 
+// Your job is to take your existing ‘genericPost’ and rebuild all of its properties inside a single Fencepost constructor 
+// (we’ll worry about inheritance in the next challenge). The ‘genericPost’ is provided for you:
+
+function Fencepost (x, y, postNum) {
+  this.x = x;
+  this.y = y;
+  this.postNum = postNum;
+  this.connectionsTo = [];
+  this.sendRopeTo = function(connectedPost) { this.connectionsTo.push(connectedPost); };
+}
+  
+// Create a prototype for the constructor, and move all functions as part of the constructor prototype 
+
+// Constructor:
+function Fencepost (x, y, postNum){
+  this.x = x;
+  this.y = y;
+  this.postNum = postNum;
+  this.connectionsTo = [];
+  this.sendRopeTo = function ( connectedPost ){
+    this.connectionsTo.push(connectedPost);
+  };
+  this.removeRope = function ( removeTo ){
+  var temp = [];
+  for(var i = 0; i<this.connectionsTo.length; i++){
+     if(this.connectionsTo[i].postNum != removeTo){
+       temp.push(this.connectionsTo[i]);
+     }
+  }
+    this.connectionsTo = temp;
+  }
+  this.movePost = function (x, y){
+    this.x = x;
+    this.y = y;
+  };
+}
+
+// Prototype 
+Fencepost.prototype = {
+  sendRopeTo: function (connectedPost) { this.connectionsTo.push(connectedPost); },
+  removeRope: function (removeTo) { 
+    var temp = [];
+    for(var i = 0; i<this.connectionsTo.length; i++) {
+      if(this.connectionsTo[i].postNum != removeTo) {
+        temp.push(this.connectionsTo[i]);
+      }
+    }
+  },
+  movePost: function (x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+// Overriding toString 
+/* Next up, the Plains of Prototypes cowboy-devs have asked for an improved toString method for their fence posts. An example of the string message they’d like is below:
+
+Fence post #10:
+Connected to posts:
+11
+12
+13
+Distance from ranch: 5 yards
+Override the toString method by using the Fencepost prototype and a newly built function that returns a string message in the above format, but with unique data for each post. The constructor and all of your previous prototype additions are provided for you as a reference for property names and procedures. Remember that connectionsTo is a list of Fencepost objects.
+*/
+
+function Fencepost (x, y, postNum){
+  this.x = x;
+  this.y = y;
+  this.postNum = postNum;
+  this.connectionsTo = [];
+}
+Fencepost.prototype = {
+  sendRopeTo: function ( connectedPost ){
+    this.connectionsTo.push(connectedPost);
+  },
+  removeRope: function ( removeTo ){
+    var temp = [];
+    for(var i = 0; i<this.connectionsTo.length; i++){
+      if(this.connectionsTo[i].postNum != removeTo){
+        temp.push(this.connectionsTo[i]);
+      }
+    }
+    this.connectionsTo = temp;
+  },
+  movePost: function (x, y){
+    this.x = x;
+    this.y = y;
+  },
+  valueOf: function (){
+  return Math.sqrt( this.x*this.x + this.y*this.y );
+  }
+};
+
+Fencepost.prototype.toString = function () {
+  var list = "";
+  for (var i = 0; i < this.connectionsTo.length; i++) {
+    list += this.connectionsTo[i].postNum + "\n"; 
+  }
+  return "Fence post #" + this.postNum + ":\n" + "Connected to posts:\n" + list + "Distance from ranch: " + this.valueOf() + " yards";
+};

@@ -8,3 +8,25 @@ function LetterCapitalize(str) {
   // code goes here  
 return str2;
 }
+
+// another version
+
+function LetterCapitalize(str) { 
+
+  var last = ' ';
+  var res = '';
+  
+  for (var i = 0; i < str.length; i++) {
+    if (last == ' ') {
+      res += str[i].toUpperCase();
+    } else {
+      res += str[i];
+    }
+    
+    last = str[i];
+  }
+  
+  // code goes here
+  return res; 
+            
+}

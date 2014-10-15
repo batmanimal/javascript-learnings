@@ -16,7 +16,14 @@ function range (start, end, step) {
   return rangeArray;
 }
 
-console.log(sum(range(1,100,10)));
+var sumOfRange = function (a,b) {
+  return sum(range(a,b,1));
+};
+
+console.log(sumOfRange(1,10));
+
+
+// console.log(sum(range(1,100,10)));
 
 // console.log(range(1, 10, 5));
 

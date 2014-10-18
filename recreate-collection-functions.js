@@ -18,3 +18,16 @@ console.log( filter([0,0,0,1], function (x) {return x < 1; }) );
 // [0, 0, 0]
 
 
+// filter for object
+// Params: object, test 
+
+function filter (obj, test) {
+  var passed = {};
+  for (var key in obj) {
+   if ( test(obj[key]) ) {
+    passed[key] = obj[key]; }
+  }
+ return passed;
+}
+
+// now need to call the function on an object 

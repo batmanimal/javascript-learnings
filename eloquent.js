@@ -54,7 +54,7 @@ console.log(greaterThan10(11)); */
 
 
 // ** filter ** 
-// this function filters out elements that do not pass a test 
+// this function filters out elements that do not pass a test and returns the new object - does not modify the input object 
 function filter(input, test) {
 	if (input.constructor === Array) {
 		var passed = [];
@@ -86,11 +86,42 @@ var test = function (a) {
 var test2 = function (a) {
 	return a > 3;
 };
+// test transform function 
+var testTransform = function(a) {
+	return a*2;
+};
 
 filter(numbers, test); // [1,2,3,4,5]
 filter(numbersObj,test); // { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5 }
 filter(numbersObj, test2); // { '4': 4, '5': 5 }
 filter(numbers, test2); // [4, 5] 
+
+
+// *** map ***
+// this function transforms an input (array or object) by applying a function to all of its elements and building a new array or object with the returned values
+// the returned array or object will have the same length as the input  
+function map(input, transform) {
+	if (input.constructor === Array) {
+		var mapped = [];
+		for (var i = 0; i < input.length; i++) {
+			mapped.push(transform(input[i]));
+		}
+		return mapped;
+	}
+	else if (input.constructor === Object) {
+		var mapped = {};
+		for (var key in input) {
+			mapped[key] = transform(input[key]);
+		}
+		return mapped;
+	}
+}
+
+console.log("the below was mapped");
+console.log(map(numbers, testTransform));
+console.log("the below was mapped");
+console.log(map(numbersObj, testTransform));
+
 
 
 

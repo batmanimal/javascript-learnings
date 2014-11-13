@@ -1,5 +1,4 @@
 // *** forEach **
-
 // iterate over object or array and do something to each element 
 function forEach(input, action) {
 	// condition to check for array 
@@ -10,44 +9,47 @@ function forEach(input, action) {
 	// condition to check for object 
 	else if (input.constructor === Object) {
 		for (var key in input) {
-			//input[key] = action(input[key]); // this changes original input object - don't want to do this 
+			//input[key] = action(input[key]); // this changes original input object - don't want to do this!  
 			action(input[key]);
 		}
 	}
 }
-
-// build simple function 
+ 
+// build simple sumOf function 
 var sum = 0; // counter var
 var sumOf = function(number) {
   sum += number;
 };
 
-// test forEach on array
+// test array
 var numbers = [1, 2, 3, 4, 5];
+// run forEach on array
 forEach(numbers, sumOf);
-console.log(sum); 
-// 15
+console.log("the sum is " + sum); 
+// the sum is 15
 
-// test forEach on object
+// test object
 var numbersObj = { 
 	1: 1, 
 	2: 2,
 	3: 3,
 	4: 4,
-	5: 5
+	5: 5,
+	6: 6
 };
+
+// run forEach on object 
 sum = 0; // reset counter var to 0 
-
 forEach(numbersObj, sumOf);  
-console.log(sum);
-// 15 
+console.log("the sum is " + sum);
+// the sum is 21 
 
-// *** functions that create new functions
-function greaterThan(n) {
+// *** functions can even create new functions *** 
+/* function greaterThan(n) {
   return function(m) { return m > n; };
 }
 var greaterThan10 = greaterThan(10);
-console.log(greaterThan10(11));
+console.log(greaterThan10(11)); */
 // true
 
 
@@ -70,6 +72,7 @@ function filter(input, test) {
 			}
 		}
 	}
+console.log("the below was filtered");
 console.log(passed);
 }
 
@@ -84,7 +87,7 @@ var test2 = function (a) {
 	return a > 3;
 };
 
-filter(numbers,test); // [1,2,3,4,5]
+filter(numbers, test); // [1,2,3,4,5]
 filter(numbersObj,test); // { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5 }
 filter(numbersObj, test2); // { '4': 4, '5': 5 }
 filter(numbers, test2); // [4, 5] 

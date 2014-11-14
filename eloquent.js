@@ -122,7 +122,31 @@ console.log(map(numbers, testTransform));
 console.log("the below was mapped");
 console.log(map(numbersObj, testTransform));
 
-
+// *** reduce ***
+// this function computes a single value from an array or object input 
+function reduce(input, combine, start) {
+  var current = start;
+  if (input.constructor === Array) {
+  	for (var i = 0; i < input.length; i++) {
+  		current = combine(current, input[i]);
+  	}
+  	return current;
+  }
+  else if (input.constructor === Object) {
+  	for (var key in input) {
+  		current = combine(current, input[key]);
+  	}
+  	return current;
+  }
+}
+// test function
+var testCombine = function(a, b) {
+  return a + b;
+};
+console.log("the below was reduced");
+console.log(reduce(numbers, testCombine, 0));
+console.log("the below was reduced");
+console.log(reduce(numbersObj, testCombine, 0));
 
 
 

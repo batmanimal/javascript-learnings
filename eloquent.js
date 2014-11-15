@@ -1,3 +1,5 @@
+// Chapter 5 Notes 
+
 // *** forEach **
 // iterate over object or array and do something to each element 
 function forEach(input, action) {
@@ -98,8 +100,8 @@ filter(numbers, test2); // [4, 5]
 
 
 // *** map ***
-// this function transforms an input (array or object) by applying a function to all of its elements and building a new array or object with the returned values
-// the returned array or object will have the same length as the input  
+// this function transforms an input by applying a function to all its elements and building a new array or object with the returned values
+// the returned array will have the same length as the input array
 function map(input, transform) {
 	if (input.constructor === Array) {
 		var mapped = [];
@@ -147,6 +149,19 @@ console.log("the below was reduced");
 console.log(reduce(numbers, testCombine, 0));
 console.log("the below was reduced");
 console.log(reduce(numbersObj, testCombine, 0));
+
+
+
+// EXERCISES 
+
+/* Use the reduce method in combination with the concat method to “flatten” an array of arrays into a single array 
+that has all the elements of the input arrays. */
+var arrays = [[1, 2, 3], [4, 5], [6]];
+
+console.log(arrays.reduce(function(a,b) { // access reduce as a method of arrays 
+	return a.concat(b)},  // params (function, start)
+	[] )); // empty array is start value 
+
 
 
 

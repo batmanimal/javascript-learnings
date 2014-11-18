@@ -16,6 +16,8 @@ function forEach(input, action) {
 		}
 	}
 }
+
+
  
 // build simple sumOf function 
 var sum = 0; // counter var

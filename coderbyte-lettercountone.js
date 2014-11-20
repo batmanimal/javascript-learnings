@@ -15,13 +15,13 @@ console.log(LetterCountI("cheese"));
 
 
 function NumberAddition(str) { 
-	str = str.replace(/[^0-9]/g, " ").trim(); 
-	str = str.split(" ");
-	var sum = 0;
-	for (var i = 0; i < str.length; i++) {
-		sum += Number(str[i]);
-	}
-	return sum;
+  var sum = 0; // counter variable
+  str = str.replace(/[^0-9]/g, " ").trim().split(" "); // replace non numbers w spaces and turn str into array
+  for (var i = 0; i < str.length; i++) {
+    sum += Number(str[i]); // traverse array and turn each element into Number, and increment sum for each
+    }     
+  return sum;
 }
    
+      
    console.log(NumberAddition("gg66j8 h41p"));

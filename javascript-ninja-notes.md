@@ -28,10 +28,10 @@ assert(useless(function() { return text; }) === text, "The useless function work
 ### 3.1.2 Sorting with a comparator
 
 JavaScript provides a simple means to sort an array. The <code>sort</code> method takes in an optional <code>compareFunction</code> that defines the sort order.
-<code>
+<code><pre>
 var values = [213, 16, 2058, 54, 10, 1965, 57, 9];
 values.sort([compareFunction]);
-</code>
+</pre></code>
 
 Let's sort an array in *descending* order to show how callbacks work. We do this by providing JavaScript with a function that makes a comparison and tells the sort algorithm how the values should be ordered. This is a *callback function* because JavaScript only calls the function when it needs to make a comparison.  
 

@@ -42,7 +42,7 @@ Simply declare a function and pass it as an argument to a method, just like any 
 
 ### 3.2 Declarations 
 
-Function literals are composed of four parts:
+Function literals are composed of four parts: <li>
 1. The <code>function</code> keyword
 2. An *optional* name (must be a valid, non-reserved identifier)
 3. Comma-separated list of parameter names (if any) enclosed in ()'s
@@ -53,7 +53,8 @@ When a function is named, that name is valid throughout the scope within which t
 All functions have a <code>name</code> property that stores the function's name as a string. Anonymous functions have this property set to an empty string.
 
 We can test that these assertions are true:
-<pre><code> function isNimble() { return true; }
+<pre><code> 
+function isNimble() { return true; }
 assert(typeof isNimble === "function", "isNimble() defined");
 assert(isNimble.name === "isNimble", "isNimble() has a name");
 
@@ -82,7 +83,8 @@ outer();
 </pre></code>
 
 To test where the various items are in scope, create a test block to intersperse throughout the code:
-<pre><code> assert(true, "descriptive text");
+<pre><code> 
+assert(true, "descriptive text");
 assert(typeof outer==='function', "outer() is in scope");
 assert(typeof inner==='function', "inner() is in scope");
 assert(typeof a==='number', "a is in scope");
@@ -141,7 +143,7 @@ Now we will insert the test block: <pre><code>
       }
       outer();
 
-      assert(true, "|----- OUTSIDE OUTER -----|");
+   assert(true, "|----- OUTSIDE OUTER -----|");
    assert(typeof outer==='function', "outer() is in scope");
    assert(typeof inner==='function', "inner() is in scope");
    assert(typeof a==='number', "a is in scope");

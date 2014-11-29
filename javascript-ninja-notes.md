@@ -19,28 +19,25 @@ Browser Event Loop: Follows 'First In, First Out' (FIFO) convention. It only tak
 **Callback**: When a function is set-up in advance, in order to execute at a later time. Can be called by the browser or other code (event handlers are a common example of callbacks). 
 <pre><code> function useless(callback) { return callback(); } 
 
-// test useless function with this code:
 var text = 'Domo arigato!';
 assert(useless(function() { return text; }) === text, "The useless function works! " + text);
-</pre></code>
+</code></pre>
 
 ### 3.1.2 Sorting with a comparator
 
 JavaScript provides a simple means to sort an array. The <code>sort</code> method takes in an optional <code>compareFunction</code> that defines the sort order.
 <pre><code> var values = [213, 16, 2058, 54, 10, 1965, 57, 9];
 values.sort([compareFunction]);
-</pre></code>
+</code></pre>
 
 Let's sort an array in *descending* order to show how callbacks work. We do this by providing JavaScript with a function that makes a comparison and tells the sort algorithm how the values should be ordered. This is a *callback function* because JavaScript only calls the function when it needs to make a comparison.  
-
-<pre><code> values.sort(function(value1, value2){
-   return value2 - value 1;
-});
-</pre></code>
+<pre><code>
+values.sort(function(value1, value2) { return value2 - value 1; });
+</code></pre>
 
 Simply declare a function and pass it as an argument to a method, just like any other object type. 
 
-### 3.2 Declarations 
+### 3.2 Declarations
 
 Function literals are composed of four parts: 
 
@@ -62,7 +59,7 @@ assert(isNimble.name === "isNimble", "isNimble() has a name");
 var canFly = function(){ return true; };
 assert(typeof canFly === "function", "canFly() defined");
 assert(canFly.name === "", "canFly() has no name");
-</pre></code>
+</code></pre>
 
 ### 3.2.1 Scoping and functions
 
@@ -81,7 +78,7 @@ function outer(){
    }
 }
 outer();
-</pre></code>
+</code></pre>
 
 To test where the various items are in scope, create a test block to intersperse throughout the code:
 <pre><code> 
@@ -91,7 +88,7 @@ assert(typeof inner==='function', "inner() is in scope");
 assert(typeof a==='number', "a is in scope");
 assert(typeof b==='number', "b is in scope");
 assert(typeof c==='number', "c is in scope");
-</pre></code>
+</code></pre>
 
 Now we will insert the test block: <pre><code>
    assert(true, "|----- BEFORE OUTER -----|");

@@ -42,7 +42,8 @@ Simply declare a function and pass it as an argument to a method, just like any 
 
 ### 3.2 Declarations 
 
-Function literals are composed of four parts: <li>
+Function literals are composed of four parts: 
+
 1. The <code>function</code> keyword
 2. An *optional* name (must be a valid, non-reserved identifier)
 3. Comma-separated list of parameter names (if any) enclosed in ()'s

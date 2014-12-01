@@ -1,6 +1,7 @@
+[TOC]
 ## Lesson 3: Functions are Fundamental 
 
-### 3.1
+### 3.1 Functional JS
 JS is a functional language. In JS, the function is the primary modular unit of execution. With few exceptions, all the script code we write will be within a function. Most of our code will run as the result of invoking a function.
 
 #### 3.1.1 Why is JavaScript's functional nature important?
@@ -136,8 +137,27 @@ assert(typeof inner==='function', "inner() is in scope");
 assert(typeof a==='number', "a is in scope");
 assert(typeof b==='number', "b is in scope");
 assert(typeof c==='number', "c is in scope");
-};
+}
 </code></pre>
+
+The scope of each declared item depends not only on where it's declared, but if it's a variable or function (hoisting).
+
+## 3.3 Invocations
+
+How a function is invoked has huge implications on the way the code runs, primarily in how the parameter <code>this</code> is established. There are four ways to invoke a function:
+1. As a **function**, straightforward
+2. As a **method**, which ties invocation to an object and enables OOJS
+3. As a **constructor**, in which a new object is brought into being
+4. Via its <code>apply()</code> or <code>call()</code> methods
+
+For all but No. 4, the function invocation operator is a set of parentheses () following any expression that evaluates to a function reference. Any arguments to be passed to the function are included inside the parentheses. 
+
+### 3.3.1 From arguments to function parameters   
+
+Arguments passed into functions are assigned, in order, to the parameters specified in the function declaration. If there are more arguments than parameters, the extra arguments are not assigned (but we still have a way to get to them through the <code>arguments</code> parameter). If there are fewer arguments than parameters, the parameters without arguments are set to <code>undefined</code>.
+
+All function invocations are passed two implicit parameters: <code>arguments</code> and <code>this</code>. They can be referenced within the function just like any explicitly named parameter. 
+
 
 
 

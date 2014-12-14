@@ -19,7 +19,7 @@ function forEach(input, action) {
 
 
  
-// build simple sumOf function 
+// build simple sumOf function to use in your forEach test
 var sum = 0; // counter var
 var sumOf = function(number) {
   sum += number;
@@ -29,6 +29,7 @@ var sumOf = function(number) {
 var numbers = [1, 2, 3, 4, 5];
 // run forEach on array
 forEach(numbers, sumOf);
+console.log("the below was forEach'd");
 console.log("the sum is " + sum); 
 // the sum is 15
 
@@ -45,6 +46,7 @@ var numbersObj = {
 // run forEach on object 
 sum = 0; // reset counter var to 0 
 forEach(numbersObj, sumOf);  
+console.log("the below was forEach'd");
 console.log("the sum is " + sum);
 // the sum is 21 
 
@@ -156,10 +158,11 @@ console.log(reduce(numbersObj, testCombine, 0));
 
 // EXERCISES 
 
-/* Use the reduce method in combination with the concat method to “flatten” an array of arrays into a single array 
+/* 5.1 Use the reduce method in combination with the concat method to “flatten” an array of arrays into a single array 
 that has all the elements of the input arrays. */
 var arrays = [[1, 2, 3], [4, 5], [6]];
 
+console.log("the output of ex 5.1 is below"); // log to keep track of what exercise I'm on 
 console.log(arrays.reduce(function(a,b) { // access reduce as a method of arrays 
 	return a.concat(b)},  // params (function, start)
 	[] )); // empty array is start value 

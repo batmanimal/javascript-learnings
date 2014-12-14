@@ -1,4 +1,5 @@
 [TOC]
+
 ## Lesson 3: Functions are Fundamental 
 
 ### 3.1 Functional JS
@@ -37,6 +38,8 @@ Let's sort an array in *descending* order to show how callbacks work. We do this
 
 Simply declare a function and pass it as an argument to a method, just like any other object type. 
 
+***
+
 ### 3.2 Declarations
 
 Function literals are composed of four parts: 
@@ -52,9 +55,7 @@ All functions have a <code>name</code> property that stores the function's name 
 
 We can test that these assertions are true:<pre><code>function isNimble() { return true; }
 assert(typeof isNimble === "function", "isNimble() defined");
-assert(isNimble.name === "isNimble", "isNimble() has a name");
-
-var canFly = function(){ return true; };
+assert(isNimble.name === "isNimble", "isNimble() has a name"); </code></pre><code><pre>var canFly = function(){ return true; };
 assert(typeof canFly === "function", "canFly() defined");
 assert(canFly.name === "", "canFly() has no name");
 </code></pre>
@@ -92,6 +93,7 @@ assert(typeof inner==='function', "inner() is in scope");
 assert(typeof a==='number', "a is in scope");
 assert(typeof b==='number', "b is in scope");
 assert(typeof c==='number', "c is in scope");
+
 function outer(){
    assert(true, "|----- INSIDE OUTER, BEFORE a -----|");
    assert(typeof outer==='function', "outer() is in scope");   // true
@@ -99,6 +101,7 @@ function outer(){
    assert(typeof a==='number', "a is in scope");
    assert(typeof b==='number', "b is in scope");
    assert(typeof c==='number', "c is in scope");
+   
    var a = 1;
    assert(true, "|----- INSIDE OUTER, AFTER a -----|");
    assert(typeof outer==='function', "outer() is in scope");   // true
@@ -106,6 +109,7 @@ function outer(){
    assert(typeof a==='number', "a is in scope");               // true
    assert(typeof b==='number', "b is in scope");
    assert(typeof c==='number', "c is in scope");
+   
    function inner(){}
    var b = 2;
    assert(true, "|----- INSIDE OUTER, AFTER INNER AND b -----|");
@@ -114,6 +118,7 @@ function outer(){
    assert(typeof a==='number', "a is in scope");               // true
    assert(typeof b==='number', "b is in scope");               // true
    assert(typeof c==='number', "c is in scope");
+   
    if (a == 1){
       var c = 3;
       assert(true, "|----- INSIDE OUTER, INSIDE IF -----|");
@@ -142,7 +147,8 @@ assert(typeof c==='number', "c is in scope");
 
 The scope of each declared item depends not only on where it's declared, but if it's a variable or function (hoisting).
 
-## 3.3 Invocations
+***
+### 3.3 Invocations
 
 How a function is invoked has huge implications on the way the code runs, primarily in how the parameter <code>this</code> is established. There are four ways to invoke a function:
 1. As a **function**, straightforward
@@ -152,11 +158,43 @@ How a function is invoked has huge implications on the way the code runs, primar
 
 For all but No. 4, the function invocation operator is a set of parentheses () following any expression that evaluates to a function reference. Any arguments to be passed to the function are included inside the parentheses. 
 
-### 3.3.1 From arguments to function parameters   
+#### 3.3.1 From arguments to function parameters   
 
 Arguments passed into functions are assigned, in order, to the parameters specified in the function declaration. If there are more arguments than parameters, the extra arguments are not assigned (but we still have a way to get to them through the <code>arguments</code> parameter). If there are fewer arguments than parameters, the parameters without arguments are set to <code>undefined</code>.
 
 All function invocations are passed two implicit parameters: <code>arguments</code> and <code>this</code>. They can be referenced within the function just like any explicitly named parameter. 
+
+<code>arguments</code> is an array-like collection with a <code>length</code> property that contains the count of arguments. The original argument values can be obtained using array indexing notation, for example: <code>arguments[2]</code> would fetch the third parameter. 
+
+The parameter <code>this</code> refers to an object that is implicitly associated with the function invocation and is termed the *function context*. However, what the parameter <code>this</code> points to is defined by how the function is invoked, not by how it's declared. So really, the parameter <code>this</code> should be termed the *invocation context*. 
+
+#### 3.3.2 Invocation as a function 
+
+ This is when a function is invoked using the () operator on an expression that evaluates to a function reference, but that is not a property of an object (that would be a method invocation). This is the most straightforward way to invoke a function. For example: 
+<code>
+function ninja(){};
+ninja();
+</code>
+When invoked in this manner, the function context is the global context -- the <code>window</code> object. 
+
+Actually, this is a special case of invoking a function as a method, it's just that the <code>window</code> is implicit as the "owner" of the function, so it's generally thought of as its own mechanism.
+
+#### 3.3.3 Invocation as a method
+
+This is when a function is assigned to a property of an object, and the invocation occurs by referencing the function using that property. For example:
+<code>
+var obj = {};
+obj.whatever = function(){};
+obj.whatever();
+</code>
+
+When we invoke a function as the method of an object, that object becomes the function context, and is available within the function via the parameter <code>this</code>.
+
+#### 3.3.4 Invocation as a constructor
+
+TODO: Finish notes for this chapter
+
+## Chapter 4: Wielding Functions
 
 
 

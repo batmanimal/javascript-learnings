@@ -35,7 +35,7 @@ var testObject = {1: 1, 2: 2};
 var emptyObject = {};
 var emptyArray = [];
 var testFunc = function (n) {
-	return (n + 1);
+	return n>1;
 };
 
 
@@ -68,19 +68,31 @@ var forEach = function (input, func) {
 // map iterates over an input, applies a function to each element, and returns an array of the mapped elements
 var map = function (input, func) {
 	var mapped = [];
-	var newFunc = function(element) {
-		var mappedElement = func(element);
-		mapped.push(mappedElement);
-	}
-	forEach(input, newFunc);
+	var pushIt = function(element) {
+	//	var mappedElement = func(element);
+		mapped.push(func(element));
+	};
+	forEach(input, pushIt);
 	return mapped;
+};
+
+// filter returns an object that contains only elements from an input that pass a given test
+var filter = function(input, test) {
+	var passed = [];
+	var pushFiltered = function(element) {
+		if (test(element)) {
+			passed.push(element);
+		}
+	};
+	forEach(input, pushFiltered);
+	return passed;
 };
 
 
 
 
-console.log(map(testArray, testFunc));
-console.log(map(testObject, testFunc));
+console.log(filter(testArray, testFunc));
+console.log(filter(testObject, testFunc));
 console.log(map([], testFunc));
 console.log(map({}, testFunc));
 console.log(map("hi", testFunc));

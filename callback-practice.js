@@ -51,7 +51,7 @@ var forEach = function (input, func) {
 	if (input.length === 0 || input == null) {
 		return input;
 	}
-	if (Array.isArray(input)) {
+	else if (Array.isArray(input)) {
 		for (var i = 0; i < input.length; i++) {
 			func(input[i]);
 		}

@@ -24,9 +24,10 @@ nameMakerJ("kim");
 //var storyWriter = function()
 
 var addWords = function(string) {
-	var newString = "";
-	newString.concat(string);
-	return newString;
+	var story = "";
+	story = story + " " + string; 
+	return story;
 };
 
-addWords("ok");
+var instance = addWords("wut");
+console.log(instance);

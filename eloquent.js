@@ -131,6 +131,9 @@ console.log(map(numbersObj, testTransform));
 // *** reduce ***
 // this function computes a single value from an array or object input 
 function reduce(input, combine, start) {
+	if(start == undefined) {
+		start = 0;
+	}
   var current = start;
   if (input.constructor === Array) {
   	for (var i = 0; i < input.length; i++) {
@@ -150,7 +153,7 @@ var testCombine = function(a, b) {
   return a + b;
 };
 console.log("the below was reduced");
-console.log(reduce(numbers, testCombine, 0));
+console.log(reduce(numbers, testCombine, undefined));
 console.log("the below was reduced");
 console.log(reduce(numbersObj, testCombine, 0));
 

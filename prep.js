@@ -80,3 +80,60 @@ var testReducer = function(a,b) { return a+b; };
 
 console.log(reduce(testArr, testReducer, 0));
 // 15
+
+var forEach = function(input, func) {
+	if(input.length === 0 || input == null) {
+		return input;
+	}
+	else if(Array.isArray(input)) {
+		for (var i = 0; i<input.length; i++) {
+			func(input[i]);
+		}
+	}
+	else if(constructor.input === Object) {
+		for (var key in input) {
+			func(input[key]);
+		}
+	} else {
+		return "wat";
+	}
+}; 
+
+var map = function (input, func) {
+	var mapped = [];
+	var pushToMapped = function(element) {
+		mapped.push(func(element));
+	};
+	// forEach
+	forEach(input, pushToMapped);
+	return mapped;	
+};
+
+
+var testArr = [1,2,3,4,5];
+var testMapFunc = function (a) {
+	return a+1;
+};
+console.log(map(testArr, testMapFunc));
+// [2,3,4,5,6]
+
+var reduce = function (input, reducer, start){
+	var current = start;
+	var reduceElements = function(element) {
+		current = reducer(current, element);
+	};
+	// forEach
+	forEach(input, reduceElements);
+	return current;
+};
+
+
+var testReduceFunc = function(a,b) {
+	return a+b;
+};
+
+console.log(reduce(testArr, testReduceFunc, 0));
+// 15
+
+
+

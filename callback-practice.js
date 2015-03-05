@@ -97,3 +97,69 @@ console.log(map([], testFunc));
 console.log(map({}, testFunc));
 console.log(map("hi", testFunc));
 console.log(map(0, testFunc));
+
+
+
+var forEach = function (input, func) {
+	// if input is empty
+	if (input.length === 0 || input == null) {
+		// return the input
+		return input;
+	}
+	// if input is array
+	else if(Array.isArray(input)) {
+		// loop over each element 
+		for(var i = 0; i < input.length; i++) {
+			// apply func to each element
+			func(input[i]);
+		}
+	}
+	// if input is object
+	else if (constructor.input === Object) {
+		// loop over each element 
+		for(var key in input) {
+			// apply func to each element	
+			func(input[key]);
+		}
+	} else {
+	// else input is not valid 
+		return "wut";
+	}
+		// return an error message 
+};
+
+var map = function(input, func) {
+	var mapped = [];
+	// if array
+	if(Array.isArray(input)) {
+		for (var i = 0; i < input.length; i++) {
+			// push mapped elements
+			mapped.push(func(input[i]));
+		}
+	}
+	// if object
+	else if (input.constructor === Object){
+		// push mapped elements
+		for(var key in input) {
+			mapped.push(func(input[key]));
+		}
+	}
+	return mapped;	
+};
+
+var newMap = function(input, func) {
+	var mapped = [];
+	var pushToMapped = function (element) {
+		mapped.push(func(element));
+	};
+	forEach(input, pushToMapped);
+	return mapped;
+};
+
+var testArr = [1,2,3,4,5];
+var testFunc = function(a) {
+	return a+1;
+};
+
+console.log(map(testArr, testFunc));
+// []

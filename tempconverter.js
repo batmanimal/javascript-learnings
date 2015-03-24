@@ -1,4 +1,5 @@
 // build function to convert from temp to temp in K
+// TODO: build a front end 
 
 var convert = {
 	// store functions as objects within the convert object 
@@ -54,5 +55,5 @@ var b = tempConverter({
 console.log(a);
 // 50
 console.log(b);
-
+// 14.6     <-- TODO: Deal with rounding! 
 

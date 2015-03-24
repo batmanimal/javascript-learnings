@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	function isNimble(){
+		return true;
+	}
+
+	assert(typeof window.isNimble === "function",
+		"isNimble() defined");
+	assert(isNimble.name === "isNimble",
+		"isNimble() has a name");
+
+	var canFly = function(){
+		return true;
+	};
+	assert(typeof window.canFly === "function",
+		"canFly() defined");
+	assert(canFly.name === "",
+		"canFly() has no name");
+
+	window.isDeadly = function(){
+		return true;
+	};
+
+	assert(typeof window.isDeadly === "function",
+		"isDeadly() defined");
+
+	function outer(){
+		assert(typeof inner === "function",
+			"inner() in scope before declaration");
+		function inner(){}
+		assert(typeof inner === "function",
+			"inner() in scope after declaration")l
+		assert(window.inner === undefined,
+			"inner() not in global scope");
+	}
+</script>

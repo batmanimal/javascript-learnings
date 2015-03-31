@@ -22,6 +22,13 @@
 }.call(this));
 
 
+var wat = NaN;
+var waat = NaN;
+console.log(wat===waat);
+// false
+console.log(wat===wat);
+// false
+
 console.log(NaN===NaN);
 // false
 console.log(3/0===4/0);

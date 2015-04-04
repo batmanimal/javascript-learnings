@@ -11,37 +11,26 @@ while (num2 === num1){
   num2 = parseInt(prompt("Give me a DIFFERENT number!")); 
 }
 
-// find the smaller num
-var smallerNum = 0;
-var returnLargerNum = function (a,b){
-	if (b > a){
-		var smallerNum = a;
-		return b;
-	} else { 
-		var smallerNum = b;
-		return a; }
+// build a func to subtract the smaller num from the larger num
+var sortNums = function (a,b){
+  if (b > a){
+    return b-a;
+  }
+  else { return a-b; }
 };
-
-// pass returnSmallerNum into the sorting function as a callback
-var sortNums = function (num, callback){
-	return (callback(a, b) - num);
-};
-var differenceOfNums = sortNums(smallerNum, returnLargerNum(num1,num2));
-
-
-// // build a func to subtract the smaller num from the larger num
-// var sortNums = function (a,b){
-// 	if (b > a){
-// 		return b-a;
-// 	} else { 
-// 		return a-b; }
-// };
-
 // invoke the sortNums function on num1 and num2 
-// var differenceOfNums = sortNums(num1, num2);
+var differenceOfNums = sortNums(num1, num2);
+
+// find the smaller num
+var returnSmallerNum = function (a,b){
+	if (b < a){
+		return b;
+	} 
+	else { return a; }
+};
 
 // create variable to store the smaller of the two nums
-// var smallerNum = returnSmallerNum(num1, num2);
+var smallerNum = returnSmallerNum(num1, num2);
 
 // use Math methods to generate random num 
 // store in variable to return to user

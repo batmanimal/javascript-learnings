@@ -11,31 +11,14 @@ while (num2 === num1){
   num2 = parseInt(prompt("Give me a DIFFERENT number!")); 
 }
 
-// build a func to subtract the smaller num from the larger num
-var sortNums = function (a,b){
-  if (b > a){
-    return b-a;
-  }
-  else { return a-b; }
-};
-// invoke the sortNums function on num1 and num2 
-var differenceOfNums = sortNums(num1, num2);
-
-// find the smaller num
-var returnSmallerNum = function (a,b){
-	if (b < a){
-		return b;
-	} 
-	else { return a; }
-};
-
-// create variable to store the smaller of the two nums
-var smallerNum = returnSmallerNum(num1, num2);
+// find and store the min and max
+var min = Math.min(num1, num2);
+var max = Math.max(num1, num2);
 
 // use Math methods to generate random num 
 // store in variable to return to user
-// need to start from the smaller number, rather than start from 0
-var randomNum = Math.floor(Math.random() * (differenceOfNums + 1)) + smallerNum;
+// need to start from the min (inclusive), rather than start from 0
+var randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
 
 // alert the randomNum to user
 alert("Your number is " + randomNum);

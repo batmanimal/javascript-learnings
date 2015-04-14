@@ -1,14 +1,13 @@
 // collect num1 from user
 do {
-	// Use Math.floor to account for decimals, while still allowing user to input a float value like 0.01
 	// Use parseFloat bc parseInt evaluates non-zero values under 1 as NaN 
-	var num1 = Math.floor(parseFloat(prompt("Give me a number!")));
+	var num1 = parseFloat(prompt("Give me a number!"));
 }
 while (num1 !== 0 && !num1); // do not accept falsy values except for 0 
 
 // collect num2 from user
 do {
-	var num2 = Math.floor(parseFloat(prompt("Give me a different number!")));
+	var num2 = parseFloat(prompt("Give me a different number!"));
 }
 while (num2 !== 0 && !num2); 
 
@@ -21,11 +20,18 @@ while (num2 === num1){
 var min = Math.min(num1, num2);
 var max = Math.max(num1, num2);
 
-// use Math.random to generate random num 
-// store in variable to return to user
-// need to start from the min (inclusive), rather than start from 0
-var randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+// if the Math.floor values are the same, ask for a diff whole number
+// accounts for edge cases where user inputs something like (5.4, 5.3) and gets 5 [5.0 falls outside 5.3 - 5.4]
+while (Math.floor(min) === Math.floor(max)) {
+	// reassign num2 (could also reassign num1), and set new min and max
+	num2 = parseInt(prompt("Give me a different WHOLE number!"));
+	min = Math.min(num1, num2);
+	max = Math.max(num1, num2);
+}
 
-// alert the randomNum to user
-alert("Your number is " + randomNum);
+// store random whole number in variable to return to user
+// round up the min value and round down the max value, so you can return inclusive min/max integers
+var randomNum = Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
+
+alert("Your random whole number is " + randomNum);
 document.write();
